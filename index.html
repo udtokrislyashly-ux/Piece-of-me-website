@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Piece of me</title>
+<!-- Pixel font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" />
+
+<!-- Social Media Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Variables for theme colors */
+  :root {
+  --bg-color: #faf9d8;      /* Home background */
+  --page-bg: #faecd2;       /* Soft beige */
+  --text-color: #7a3b55;
+  --header-color: #FFC7D6;
+}
+
+  body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+ body.dark-mode {
+  --bg-color: #2B1E23;      
+  --text-color: #fecada;     
+  --header-color: #4A3038; 
+}
+
+/* Text color for normal mode */
+.page-card p,
+.page-card h1,
+.page-card h2,
+.page-card strong,
+.page-card a {
+    color: #4A3038;
+}
+
+/* Dark mode text inside the card */
+body.dark-mode .page-card p,
+body.dark-mode .page-card h1,
+body.dark-mode .page-card h2,
+body.dark-mode .page-card strong,
+body.dark-mode .page-card a {
+    color: #fe7fa5;
+}
+
+  /* Header */
+header {
+  width: 100%;
+  background-color: var(--header-color);
+  border-bottom: 4px solid #db9797;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top:0;
+  z-index: 1000;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+nav a.active-nav {
+    background-color: rgba(255,255,255,0.35);
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+button {
+  padding: 5px 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Sections */
+section {
+  padding: 50px 20px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  text-align: center;
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+#home {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+}
+
+.intro{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:80px;
+    padding:120px 80px;
+}
+
+.intro-text{
+    text-align:left;
+    margin-top:100px;
+}
+
+.intro-photo img{
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+h1{
+    font-family:'Press Start 2P', cursive;
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+h2{
+    font-family:'Press Start 2P', cursive;
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+#home-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+#home-background::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.35);
+
+    z-index:1;
+}
+
+.center-text,
+#home-background p{
+    position:relative;
+    z-index:2;
+}
+
+.white-strip {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: var(--header-color);
+  padding: 10px 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.center-text {
+  margin-top: 100px;
+  font-size: 48px;
+  font-family: 'Press Start 2P', cursive;
+  color:var(--text-color);
+}
+
+footer {
+    background-color: var(--header-color);
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: var(--text-color);
+    border-top: 4px solid #db9797;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 5px solid #f5f5dc;
+}
+
+.social-link{
+    text-decoration:none;
+    margin:0 20px;
+}
+
+.social-link i{
+    font-size:50px;
+    color:#f97171;
+    transition:0.3s;
+}
+
+.social-link i:hover{
+    color:#ff69b4;
+    transform:scale(1.2);
+}
+
+.contact-info{
+    margin:40px 0;
+    line-height:2;
+}
+
+.social-title{
+    font-size:18px;
+}
+
+.family-image {
+  max-width: 100%; /* limits the width to 80% of its container */
+  height: auto; /* keeps the aspect ratio */
+  display: block; /* removes inline spacing */
+  margin: 0 auto; /* centers the image horizontally */
+
+  box-shadow: inset 0 -120px 100px rgba(0, 0, 0, 0.35);
+}
+
+.quote-image{
+    width:500px;
+    max-width:90%;
+    margin:30px auto 0;
+    display:block;
+    border:none;
+}
+
+.about-text{
+    width:100%;
+    padding:0 60px;
+    text-align:justify;
+    line-height:2.3;
+    margin-bottom:30px;
+}
+
+.hobby-card{
+    width:60%;
+    margin:0 auto 80px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.hobby-card img{
+    width:300px;
+    margin-bottom:25px;
+}
+
+.hobby-card h2{
+    margin-bottom:20px;
+}
+
+.hobby-card p{
+    line-height:2;
+    max-width:700px;
+}
+
+.about-intro{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:100px;
+
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+.about-name{
+    text-align:left;
+}
+
+.about-name h2{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.about-name h1{
+    font-size:32px;
+    line-height:1.5;
+}
+
+.about-photo img{
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:6px solid white;
+}
+
+#about,
+#hobbies,
+#education,
+#contact{
+    background-image: url("https://i.pinimg.com/736x/bb/e7/16/bbe71683ceae5150946391349f6959d1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.page-card{
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 40px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a data-section="home" class="active-nav">Home</a>
+    <a data-section="about">About Me</a>
+    <a data-section="hobbies">Hobbies</a>
+    <a data-section="education">Education</a>
+    <a data-section="contact">Contact</a>
+  </nav>
+
+  <button class="theme-btn" onclick="toggleTheme()">
+    🌙 Theme
+</button>
+</header>
+
+<!-- Home Section -->
+<section id="home" class="active">
+  <div id="home-background" style="background-image: url(https://i.pinimg.com/1200x/c6/7e/f3/c67ef33666475bf403b60d45ddb2b34e.jpg);">
+    <div class="center-text">WELCOME</div>
+    <p style="margin-top:20px;">"Every thing you lost will be replaced with something better (≧∀≦)ゞ."</p>
+  </div>
+
+</section>
+
+<!-- About Me Section -->
+<section id="about">
+  <div class="page-card">
+   
+  <h1>🩷✨🌸</h1>
+
+    <div class="about-intro">
+
+        <div class="about-name">
+
+            <h2>Krisly Ashley B. Udto</h2>
+
+        </div>
+
+        <div class="about-photo">
+
+            <img src="c:\Users\User\Downloads\ASHLEY.jpg" alt="Krisly">
+
+        </div>
+
+    </div>
+
+
+ <p class="about-text">
+People know me as a talkative, oversharing person who won’t shut up. I’ll stand right in front of you or sit beside you and start talking non-stop whenever something happens or whenever I know something. But sometimes I go quiet because there’s nothing to talk about — though I still listen closely when others share how their day went.
+</p>
+
+<p class="about-text">
+Once you get to know me better, you’ll notice this: when I’m talking or laughing, my close friend usually “takes the hit” — because when I laugh, I can’t help but slap her back or shake her, and I just can’t stop myself  (≧∇≦). That’s just one of my love languages!
+</p>
+
+<p class="about-text">
+I’m also quite avoidant. When something feels overwhelming or pressuring, I’ll step away, then come back later as if nothing happened — no explanation needed.
+</p>
+
+<p class="about-text">
+I’m a total papa’s girl that's what mama keeps telling me because my mouth always say "where's papa ma?" "where are you going pa?" full of papa, mama also told me that I stole her man （＞ｙ＜）. Whenever I’m having a hard time or I'm having a good day I will tell them. That’s what they taught me: to share both the happy moments and the hard or bad ones.
+</p>
+
+  <img src="c:\Users\User\Downloads\family.jpg" alt="Family" class="family-image" 
+  style="width:700px; 
+  margin-top:20px;">
+
+  <img src="https://i.pinimg.com/736x/c0/85/e0/c085e098f4e7c4d438268d597e8ef3ec.jpg"
+     alt="Family Quote"
+     class="quote-image">
+
+     </div>
+</section>
+
+<!-- My Hobbies -->
+<section id="hobbies">
+  <div class="page-card">
+
+  <h1 style="font-family:'Press Start 2P', cursive;">🐰🎀🍓</h1>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center;">
+
+    <!-- Hobby 1 -->
+    <div class="hobby-card">
+      <img src="https://i.pinimg.com/736x/d6/d7/f8/d6d7f831483b0bd765ae10f67a7a2815.jpg" alt="Gaming" style="width:280px;">
+      <h2 style="font-family:'Press Start 2P', cursive;">Playing Online Games</h2>
+      <p>I love playing online games because it helps me unwind, even though it’s actually stressful and not relaxing at all.</p>
+    </div>
+    <!-- Hobby 2 -->
+    <div class="hobby-card">
+      <img src="https://i.pinimg.com/736x/6a/c8/cb/6ac8cbb259bfdf65f756f82ec01f71e7.jpg" alt="Reading" style="width:300px;">
+      <h2 style="font-family:'Press Start 2P', cursive;">Reading</h2>
+      <p>I love reading books because it expands my knowledge and imagination. I especially enjoy fiction and romance.</p>
+    </div>
+    <!-- Hobby 3 -->
+    <div class="hobby-card">
+      <img src="c:\Users\User\OneDrive\Videos\Pictures\Screenshots\Screenshot 2026-07-08 233312.png" alt="Anime" style="width:400px;">
+      <h2 style="font-family:'Press Start 2P', cursive;">Watching Anime</h2>
+      <p>Anime allows me to enjoy different stories from different cultures and styles.</p>
+    </div>
+    <!-- Hobby 4 -->
+    <div class="hobby-card">
+      <img src="c:\Users\User\OneDrive\Videos\Pictures\Screenshots\SPOTIFY.jpg.png" alt="Music" style="width:400px;">
+      <h2 style="font-family:'Press Start 2P', cursive;">Listening to Music</h2>
+      <p>I enjoy listening to music because it helps me to relax and forget my worries once I listen to it.</p>
+    </div>
+  </div>
+  
+</section>
+
+<!-- My Education -->
+<section id="education">
+  <div class="page-card">
+
+  <h1>🐱💗✨</h1>
+
+  <div style="display:flex; flex-direction:column; align-items:center;">
+
+    <div style="margin-bottom:40px;">
+      <img src="https://scontent.fmnl13-4.fna.fbcdn.net/v/t39.30808-6/494662855_122214310742132171_2593026616183883333_n.jpg?stp=dst-jpg_tt6&cstp=mx1920x1920&ctp=s1920x1920&_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeH5UFuw5WAr1sb3Con9C594KdKLWhGHlPsp0otaEYeU-_j9hZLWGwulyI39UeSP1DDSOTVF2kyK7ihoS4EjeUXQ&_nc_ohc=5xOG1CuaslAQ7kNvwFol7ga&_nc_oc=Adp_sSe5Impewthq_44H7hlTtodw9Akf0LAK82yT6Z_UYEt55BQLJdrBgBU3jrB6-H7EJ93Sx2iIggM2E1D71gLn&_nc_zt=23&_nc_ht=scontent.fmnl13-4.fna&_nc_gid=Uw5LdQwHF5kzqmpP_1UZ6g&_nc_ss=7b2a8&oh=00_AQBYkPf03hBJDMITtJur9iTFTGwV85kO0eYkVcMY7KYI9A&oe=6A555C80" 
+      alt="Elementary School" style="width:250px;">
+      <p style="margin-top:15px;">Pusok Elementary School</p>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <img src="https://scontent.fmnl13-5.fna.fbcdn.net/v/t39.30808-6/277790904_375787104557118_3444589701675298242_n.jpg?stp=dst-jpg_tt6&cstp=mx630x645&ctp=s630x645&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGfstMCC1Che1vQOQ2lhCFi8MKJBNBsdwjwwokE0Gx3CLepo0S1mTnWsXcouGinXjoOpjNJjvEQAtNeMTfe_650&_nc_ohc=I2hyyfUzw3AQ7kNvwEAN0Zf&_nc_oc=Adrw_N3BU7lOD4yd305F39G_rIKQaCVwPfbKevkZ86Y36-63IlCgtinmu1EOOVKV1hv0rXNwaKXqDgF757QK_I_W&_nc_zt=23&_nc_ht=scontent.fmnl13-5.fna&_nc_gid=nELmwgncS_sFvU10tXglZw&_nc_ss=7b2a8&oh=00_AQC7ppzjYfkC4eyN9EnZzPfb83ynTMjSyPI0fXQF5gH9JQ&oe=6A5550BF" 
+      alt="High School" style="width:250px;">
+      <p style="margin-top:15px;">Pajo National High School</p>
+    </div>
+
+    <div style="margin-bottom:40px;">
+      <img src="https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/241370095_573550497168142_6956587778512613949_n.jpg?stp=dst-jpg_tt6&cstp=mx554x554&ctp=s554x554&_nc_cat=110&ccb=1-7&_nc_sid=2285d6&_nc_eui2=AeE4tCbZIx4sQcloX-GRq_LJl9p4L3SKlguX2ngvdIqWC-L-mjdHM_sUrXD-Vt-9Edjf0ukX6AUqgys-HWXJohV3&_nc_ohc=YFDixjc5-08Q7kNvwETNHDM&_nc_oc=AdpVHZw1Zw1zUuVmpkcd0xwIXL6_6W_aYkf4zpzSezJNxCV3euJI8RzXathk94UW4nh1A6x1cgGYrFTqKifkHLHJ&_nc_zt=23&_nc_ht=scontent.fceb2-2.fna&_nc_gid=Idi9GmVOF8SukxcKfTSfeg&_nc_ss=7b2a8&oh=00_AQCgjmzsBrjaq6yCx_jACzKzW6bp2_HzGknZgFbmSbuvNA&oe=6A55FA83"
+      alt="High School" style="width:250px;">
+      <p style="margin-top:15px;">Asian Learning Center</p>
+    </div>
+
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2w6He6BTtFxRfa7GaSzF2Mi4hthUY-U6NcreJ4Xw7ihyE_x04BLgWspk&s=10" 
+      alt="College" style="width:250px;">
+      <p style="margin-top:15px;">Lapu-Lapu City College</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact -->
+ <section id="contact">
+  <div class="page-card">
+
+  <h1>🧸☁️🌙</h1>
+
+  <p class="contact-info">
+    <strong>Gmail:</strong>
+    <a href="mailto:udto.krislyashly@llcc.edu.ph">udto.krislyashly@llcc.edu.ph</a>
+  </p>
+
+  <p class="contact-info">
+    <strong>Phone:</strong> 09206026348
+  </p>
+
+  <p class="contact-info">
+    <strong>Location:</strong> Pusok, Lapu-Lapu City, Cebu
+  </p>
+
+ <div style="margin-top:20px;">
+
+    <h2 class="social-title">Follow me on social media</h2>
+
+    <a href="https://www.facebook.com/sheyyalat" class="social-link" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+    </a>
+
+    <a href="https://www.instagram.com/klkmncsv_/" class="social-link" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/@kmnlskcs" class="social-link" target="_blank">
+        <i class="fa-brands fa-tiktok"></i>
+    </a>
+
+</div>  
+  
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> - My Lifeline</p>
+</footer>
+
+<script>
+  // Navigation
+document.querySelectorAll('nav a').forEach(link => {
+    link.onclick = () => {
+
+        document.querySelectorAll('section').forEach(sec =>
+            sec.classList.remove('active')
+        );
+
+        document.querySelectorAll('nav a').forEach(nav =>
+            nav.classList.remove('active-nav')
+        );
+
+        const target = link.getAttribute('data-section');
+        document.getElementById(target).classList.add('active');
+
+        link.classList.add('active-nav');
+    };
+});
+
+// Theme Toggle
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+}
+
+// Dynamic Year
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+</script>
+</body>
+</html>
